@@ -1,10 +1,7 @@
-function preloaderFadeOutInit(){
-    $('.preloader').fadeOut('slow');
-    $('body').attr('id','');
-    }
-    // Window load function
-    jQuery(window).on('load', function () {
-    (function ($) {
-    preloaderFadeOutInit();
-    })(jQuery);
-    });
+var loader = document.querySelector(".loader");
+
+window.addEventListener("load", vanish);
+
+function vanish() {
+    loader.classList.add("disappear");
+}

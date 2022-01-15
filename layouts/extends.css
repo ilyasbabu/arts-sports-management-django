@@ -1,19 +1,23 @@
-.preloader {
-    position: absolute;
+.loader{
+    position: fixed;
     top: 0;
     left: 0;
-    bottom:0;
-    right:0;
+    background-color: whitesmoke;
     width: 100%;
-    height: 100vh;
-    z-index: 99999999;
-    background-image: url('../img/Ripple-loader.gif'); /* your icon gif file path */
-    background-repeat: no-repeat;
-    background-color: #FFF;
-    background-position: center;
-    }
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    z-index: 99999;
+    align-items: center;
+}
 
-    #stop-scrolling {
-        height: 100% !important;
-        overflow: hidden !important;
-        }
+.disappear{
+    animation: vanish 1s forwards;
+}
+
+@keyframes vanish{
+    100%{
+        opacity: 0;
+        visibility: hidden;
+    }
+}
