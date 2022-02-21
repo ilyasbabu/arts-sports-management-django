@@ -1,0 +1,103 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+        <div class="p-12">
+            <h1 class="mb-8 text-4xl">
+                Arts scoreboard
+            </h1>
+
+            <div class="container mb-14">
+                <h1 class="mb-8 text-2xl font-semibold">
+                    Housewise results
+                </h1>
+                <table class="text-left md:w-1/2 w-full">
+                    <thead class="bg-slate-800 flex text-white w-full">
+                        <tr class="flex w-full mb-4">
+                            <th class="p-4 w-1/4 ">House</th>
+                            <th class="p-4  w-1/4 mx-auto">point</th>
+                        </tr>
+                    </thead>
+                    <!-- Remove the nasty inline CSS fixed height on production and replace it with a CSS class — this is just for demonstration purposes! -->
+                    <tbody class="bg-grey-light flex flex-col items-center justify-between overflow-y-scroll w-full"
+                        style="height: 50vh;">
+                        <tr class="flex w-full mb-4">
+                            <td class="p-4 w-1/4">Red</td>
+                            <td class="p-4 w-1/4 mx-auto">Cats</td>
+                        </tr>
+                        <tr class="flex w-full mb-4">
+                            <td class="p-4 w-1/4">White</td>
+                            <td class="p-4 w-1/4 mx-auto">Cats</td>
+                        </tr>
+                        <tr class="flex w-full mb-4">
+                            <td class="p-4 w-1/4">Blue</td>
+                            <td class="p-4 w-1/4 mx-auto">Cats</td>
+                        </tr>
+                        <tr class="flex w-full mb-4">
+                            <td class="p-4 w-1/4">Green</td>
+                            <td class="p-4 w-1/4 mx-auto">Cats</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="container">
+                <h1 class="mb-8 text-2xl font-semibold">
+                    Individual results
+                </h1>
+
+                <table class="text-left w-full">
+                    <thead class="bg-slate-800 flex text-white w-full">
+                        <tr class="flex w-full mb-4">
+                            <th class="p-4 w-1/4">Rank</th>
+                            <th class="p-4 w-1/4">Student</th>
+                            <th class="p-4 w-1/4">House</th>
+                            <th class="p-4 w-1/4">Points</th>
+                        </tr>
+                    </thead>
+                    <!-- Remove the nasty inline CSS fixed height on production and replace it with a CSS class — this is just for demonstration purposes! -->
+                    <tbody class="bg-grey-light flex flex-col items-center justify-between overflow-y-scroll w-full"
+                        style="height: 50vh;">
+                        <tr class="flex w-full mb-4">
+                            <td class="p-4 w-1/4">1</td>
+                            <td class="p-4 w-1/4">Cats</td>
+                            <td class="p-4 w-1/4">Birds</td>
+                            <td class="p-4 w-1/4">Fish</td>
+                        </tr>
+                        <tr class="flex w-full mb-4">
+                            <td class="p-4 w-1/4">2</td>
+                            <td class="p-4 w-1/4">Cats</td>
+                            <td class="p-4 w-1/4">Birds</td>
+                            <td class="p-4 w-1/4">Fish</td>
+                        </tr>
+                        <tr class="flex w-full mb-4">
+                            <td class="p-4 w-1/4">3</td>
+                            <td class="p-4 w-1/4">Cats</td>
+                            <td class="p-4 w-1/4">Birds</td>
+                            <td class="p-4 w-1/4">Fish</td>
+                        </tr>
+                        <tr class="flex w-full mb-4">
+                            <td class="p-4 w-1/4">4</td>
+                            <td class="p-4 w-1/4">Cats</td>
+                            <td class="p-4 w-1/4">Birds</td>
+                            <td class="p-4 w-1/4">Fish</td>
+                        </tr>
+                        <tr class="flex w-full mb-4">
+                            <td class="p-4 w-1/4">5</td>
+                            <td class="p-4 w-1/4">Cats</td>
+                            <td class="p-4 w-1/4">Birds</td>
+                            <td class="p-4 w-1/4">Fish</td>
+                        </tr>
+                        <tr class="flex w-full mb-4">
+                            <td class="p-4 w-1/4">6</td>
+                            <td class="p-4 w-1/4">Cats</td>
+                            <td class="p-4 w-1/4">Birds</td>
+                            <td class="p-4 w-1/4">Fish</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </main>
+    <!-- footer starts -->
+{% endblock %}
+    

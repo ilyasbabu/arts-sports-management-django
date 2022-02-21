@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<div class="h-screen w-screen grid bg-slate-100 md:flex items-center  md:justify-evenly ">
+    <div
+        class="fr_arts w-full h-full md:h-5/6 md:w-2/5 shadow-2xl border-2 md:rounded  transition ease-out duration-300 cursor-pointer  text-white hover:rounded-md text-6xl">
+        <a href="/arts">
+            <p class="flex justify-center font-bold items-center h-full">ARTS</p>
+        </a>
+    </div>
+    <div
+        class="fr_sports w-full h-full md:h-5/6 md:w-2/5 shadow-2xl border-2 md:rounded  transition ease-out duration-300 cursor-pointer text-white hover:rounded-md text-6xl">
+        <a href="/sports">
+            <p class="flex justify-center font-bold items-center h-full">SPORTS</p>
+        </a>
+    </div>
+</div>
+</main>
+<style>
+    .fr_arts {
+        background-image: linear-gradient(to right,
+            rgba(70, 70, 70, 0.582), hsla(0, 0%, 25%, 0.411)),
+        url("{% static 'media/arts_f.jpg' %}");
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
+        font-weight: 500;
+
+    }
+
+    .fr_arts:hover {
+        background-image: linear-gradient(to right,
+            hsla(0, 0%, 25%, 0.815), hsla(0, 0%, 25%, 0.815)),
+        url("{% static 'media/arts_f.jpg' %}");
+    }
+
+    .fr_sports {
+        background-image: linear-gradient(to right,
+            rgba(70, 70, 70, 0.582), hsla(0, 0%, 25%, 0.411)),
+        url("{% static 'media/sports_f.jpg' %}");
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
+        font-weight: 500;
+
+    }
+
+    .fr_sports:hover {
+        background-image: linear-gradient(to right,
+            hsla(0, 0%, 25%, 0.815), hsla(0, 0%, 25%, 0.815)),
+        url("{% static 'media/sports_f.jpg' %}");
+    }
+</style>
+{% endblock %}
