@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'tailwind',
     'theme',
     'django_browser_reload',
+    'mainapp',
 ]
 
 TAILWIND_APP_NAME = 'theme'
@@ -89,8 +90,11 @@ WSGI_APPLICATION = 'artsport_project.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'artsport',
+        'USER' : 'postgres',
+        'PASSWORD': '1234',
+        'HOST':'localhost'
     }
 }
 
