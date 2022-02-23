@@ -15,20 +15,22 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path,include
-from mainapp import views
+from mainapp import views as mainapp_views
+from arts import views as artsviews
+from sports import views as sportsviews
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path("__reload__/", include("django_browser_reload.urls")),
-    path('', views.home, name='home'),
-    path('arts/',views.artshome,name='artshome'),
-    path('sports/',views.sportshome,name='sportshome'),
-    path('arts/details/',views.artsdetails,name='artsdetails'),
-    path('sports/details/',views.sportsdetails,name='sportsdetails'),
-    path('arts/gallery/',views.artsgallery,name='artsgallery'),
-    path('sports/gallery/',views.sportsgallery,name='sportsgallery'),
-    path('arts/score/',views.arts_score,name='arts_score'),
-    path('sports/score/',views.sports_score,name='sports_score'),
-    path('arts/register',views.arts_register,name='arts_register'),
-    path('sports/register',views.sports_register,name='sports_register'),
+    path('', mainapp_views.home, name='home'),
+    path('arts/',artsviews.artshome,name='artshome'),
+    path('sports/',sportsviews.sportshome,name='sportshome'),
+    path('arts/details/',artsviews.artsdetails,name='artsdetails'),
+    path('sports/details/',sportsviews.sportsdetails,name='sportsdetails'),
+    path('arts/gallery/',artsviews.artsgallery,name='artsgallery'),
+    path('sports/gallery/',sportsviews.sportsgallery,name='sportsgallery'),
+    path('arts/score/',artsviews.arts_score,name='arts_score'),
+    path('sports/score/',sportsviews.sports_score,name='sports_score'),
+    path('arts/register',artsviews.arts_register,name='arts_register'),
+    path('sports/register',sportsviews.sports_register,name='sports_register'),
 ]
