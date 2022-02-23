@@ -1,6 +1,12 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block content %}
+    <!-- preloader -->
+    <div class="loader">
+        <img src="{% static 'media/loading.gif' %}" alt="">
+    </div>
+    <main class="h-screen">
+        <script src="{% static 'js/script.js' %}"></script>
 
         <div class="h-1/2 w-screen grid bg-slate-100 md:flex items-center md:justify-evenly">
             <div
