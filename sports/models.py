@@ -5,7 +5,7 @@ class SportsHouse(models.Model):
     house_name=models.CharField(max_length=10)
     def __str__(self):
         return self.house_name
-        
+
 class SportsEvent(models.Model):
     event_name=models.CharField(max_length=100)
     def __str__(self):
@@ -18,7 +18,10 @@ class SportsEventDetail(models.Model):
 
 class SportsParticipant(models.Model):
     participant_name=models.CharField(max_length=100)
+    participant_email=models.EmailField()
+    participant_mobile=models.IntegerField()
     participant_department=models.CharField(max_length=100)
+    participant_semester=models.CharField(max_length=15)
     participant_house=models.ForeignKey(SportsHouse,on_delete=models.CASCADE)
     participant_score=models.IntegerField(null=True,blank=True)
     participant_event_1=models.ForeignKey(SportsEvent,on_delete=models.CASCADE,null=True,blank=True,related_name='participant_event_1')
@@ -26,3 +29,10 @@ class SportsParticipant(models.Model):
     participant_event_3=models.ForeignKey(SportsEvent,on_delete=models.CASCADE,null=True,blank=True,related_name='participant_event_3')
     def __str__(self):
         return self.participant_name
+
+class SportsGallery(models.Model):
+    image_name=models.CharField(max_length=100)
+    image_desc=models.TextField()
+    image_file=models.ImageField(upload_to='images/')
+    def __str__(self):
+        return self.image_name

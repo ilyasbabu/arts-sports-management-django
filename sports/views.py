@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from .forms import *
 
 # Create your views here.
 def sportshome(request):
@@ -10,4 +11,5 @@ def sportsgallery(request):
 def sports_score(request):
     return render(request, 'sports_score.html')
 def sports_register(request):
-    return render(request, 'sports_register.html')
+    form=SportsRegForm()
+    return render(request, 'sports_register.html',{'form':form})
