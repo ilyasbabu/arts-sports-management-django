@@ -19,14 +19,14 @@ class SportsEventDetail(models.Model):
 class SportsParticipant(models.Model):
     participant_name=models.CharField(max_length=100)
     participant_email=models.EmailField()
-    participant_mobile=models.IntegerField()
+    participant_mobile=models.CharField(max_length=12)
     participant_department=models.CharField(max_length=100)
-    participant_semester=models.CharField(max_length=15)
+    participant_year=models.CharField(max_length=15)
     participant_house=models.ForeignKey(SportsHouse,on_delete=models.CASCADE)
     participant_score=models.IntegerField(null=True,blank=True)
-    participant_event_1=models.ForeignKey(SportsEvent,on_delete=models.CASCADE,null=True,blank=True,related_name='participant_event_1')
-    participant_event_2=models.ForeignKey(SportsEvent,on_delete=models.CASCADE,null=True,blank=True,related_name='participant_event_2')
-    participant_event_3=models.ForeignKey(SportsEvent,on_delete=models.CASCADE,null=True,blank=True,related_name='participant_event_3')
+    participant_event_1=models.ForeignKey(SportsEvent,on_delete=models.CASCADE,related_name='participant_event_1')
+    participant_event_2=models.ForeignKey(SportsEvent,on_delete=models.CASCADE,default=0,null=True,blank=True,related_name='participant_event_2')
+    participant_event_3=models.ForeignKey(SportsEvent,on_delete=models.CASCADE,default=0,null=True,blank=True,related_name='participant_event_3')
     def __str__(self):
         return self.participant_name
 
