@@ -7,7 +7,8 @@ def artshome(request):
 def artsdetails(request):
     return render(request, 'artsdetails.html')
 def artsgallery(request):
-    return render(request, 'arts_gallery.html')
+    photos=ArtsGallery.objects.all()
+    return render(request, 'arts_gallery.html',{'ph':photos})
 def arts_score(request):
     return render(request, 'arts_score.html')
 def arts_register(request):

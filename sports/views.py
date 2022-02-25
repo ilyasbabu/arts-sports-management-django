@@ -7,7 +7,8 @@ def sportshome(request):
 def sportsdetails(request):
     return render(request, 'sportsdetails.html')
 def sportsgallery(request):
-    return render(request, 'sports_gallery.html')
+    photos=SportsGallery.objects.all()
+    return render(request, 'sports_gallery.html',{'ph':photos})
 def sports_score(request):
     return render(request, 'sports_score.html')
 def sports_register(request):
