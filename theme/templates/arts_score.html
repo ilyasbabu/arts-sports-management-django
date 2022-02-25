@@ -64,6 +64,7 @@
                     <!-- Remove the nasty inline CSS fixed height on production and replace it with a CSS class — this is just for demonstration purposes! -->
                     <tbody class="bg-grey-light flex flex-col items-center justify-between overflow-y-scroll w-full"
                         style="height: 50vh;">
+                        {% if rank %}
                         {% for i in rank %}
                         <tr class="flex w-full mb-4">
                             <td class="p-4 w-1/4">{{forloop.counter}}</td>
@@ -72,6 +73,10 @@
                             <td class="p-4 w-1/4">{{i.participant_score}}</td>
                         </tr>
                         {% endfor %}
+                        {% else %}
+                        <tr class="flex w-full mb-4">
+                            <td class="p-4 w-1/4 font-semibold text-xl">Results coming soon!</td>
+                            {% endif %}
                         
                     </tbody>
                 </table>
