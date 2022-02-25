@@ -5,5 +5,8 @@ from .models import *
 admin.site.register(ArtsHouse)
 admin.site.register(ArtsEvent)
 admin.site.register(ArtsEventDetail)
-admin.site.register(ArtsParticipant)
+class Participant(admin.ModelAdmin):
+    list_display=['__str__','participant_score','participant_event_1','participant_event_2','participant_event_3']
+    list_editable=['participant_score']
+admin.site.register(ArtsParticipant,Participant)
 admin.site.register(ArtsGallery)

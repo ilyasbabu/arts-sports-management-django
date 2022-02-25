@@ -23,7 +23,7 @@ class ArtsParticipant(models.Model):
     participant_email=models.EmailField()
     participant_mobile=models.IntegerField()
     participant_department=models.CharField(max_length=100)
-    participant_semester=models.CharField(max_length=15)
+    participant_year=models.CharField(max_length=15)
     participant_house=models.ForeignKey(ArtsHouse,on_delete=models.CASCADE)
     participant_score=models.IntegerField(null=True,blank=True)
     participant_event_1=models.ForeignKey(ArtsEvent,on_delete=models.CASCADE,null=True,blank=True,related_name='participant_event_1')
