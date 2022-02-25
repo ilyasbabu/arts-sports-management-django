@@ -1,5 +1,6 @@
 from django.shortcuts import render,redirect
 from .forms import *
+from django.db.models import Sum
 
 # Create your views here.
 def sportshome(request):
@@ -10,7 +11,16 @@ def sportsgallery(request):
     photos=SportsGallery.objects.all()
     return render(request, 'sports_gallery.html',{'ph':photos})
 def sports_score(request):
-    return render(request, 'sports_score.html')
+    dim=SportsParticipant.objects.filter(participant_house_id=1).aggregate(Sum('participant_score'))
+    dim=dim['participant_score__sum']
+    rub=SportsParticipant.objects.filter(participant_house_id=2).aggregate(Sum('participant_score'))
+    rub=rub['participant_score__sum']
+    eme=SportsParticipant.objects.filter(participant_house_id=3).aggregate(Sum('participant_score'))
+    eme=eme['participant_score__sum']
+    sap=SportsParticipant.objects.filter(participant_house_id=4).aggregate(Sum('participant_score'))
+    sap=sap['participant_score__sum']
+    rank=SportsParticipant.objects.all().order_by('-participant_score')
+    return render(request, 'sports_score.html',{'dim':dim,'rub':rub,'eme':eme,'sap':sap,'rank':rank})
 def sports_register(request):
     form=SportsRegForm(request.POST)
     if request.method=='POST':

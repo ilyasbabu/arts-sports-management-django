@@ -9,7 +9,10 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
 	<link rel="stylesheet" href="{% static 'css/extends.css' %}">
+	{% block style %}
+	{% endblock style %}
 	{% tailwind_css %}
+
 </head>
 <body>
 {% block content %}
@@ -42,7 +45,9 @@
 					</svg></li>
 			</ul>
 			<div class="flex mx-auto text-white text-center">
+				<a href="https://github.com/ilyasbabu">
 				Arts and sports management © 2022
+			</a>
 			</div>
 		</div>
 	</footer>

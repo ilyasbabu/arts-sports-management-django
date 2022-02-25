@@ -1,5 +1,6 @@
 from django.shortcuts import render,redirect
 from .forms import *
+from django.db.models import Sum
 
 # Create your views here.
 def artshome(request):
@@ -10,7 +11,16 @@ def artsgallery(request):
     photos=ArtsGallery.objects.all()
     return render(request, 'arts_gallery.html',{'ph':photos})
 def arts_score(request):
-    return render(request, 'arts_score.html')
+    dim=ArtsParticipant.objects.filter(participant_house_id=1).aggregate(Sum('participant_score'))
+    dim=dim['participant_score__sum']
+    rub=ArtsParticipant.objects.filter(participant_house_id=2).aggregate(Sum('participant_score'))
+    rub=rub['participant_score__sum']
+    eme=ArtsParticipant.objects.filter(participant_house_id=3).aggregate(Sum('participant_score'))
+    eme=eme['participant_score__sum']
+    sap=ArtsParticipant.objects.filter(participant_house_id=4).aggregate(Sum('participant_score'))
+    sap=sap['participant_score__sum']
+    rank=ArtsParticipant.objects.all().order_by('-participant_score')
+    return render(request, 'arts_score.html',{'dim':dim,'rub':rub,'eme':eme,'sap':sap,'rank':rank})
 def arts_register(request):
     form=ArtsRegForm(request.POST)
     if request.method=='POST':
