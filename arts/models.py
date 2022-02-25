@@ -14,8 +14,8 @@ class ArtsEvent(models.Model):
 
 class ArtsEventDetail(models.Model):
     event_name=models.ForeignKey(ArtsEvent,on_delete=models.CASCADE)
-    event_date=models.DateField()
-    event_time=models.TimeField()
+    event_dateTime=models.DateTimeField()
+    #event_time=models.CharField(max_length=10)
 
 
 class ArtsParticipant(models.Model):

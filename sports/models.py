@@ -13,8 +13,8 @@ class SportsEvent(models.Model):
 
 class SportsEventDetail(models.Model):
     event_name=models.ForeignKey(SportsEvent,on_delete=models.CASCADE)
-    event_date=models.DateField()
-    event_time=models.TimeField()
+    event_dateTime=models.DateTimeField()
+    #event_time=models.CharField(max_length=10)
 
 class SportsParticipant(models.Model):
     participant_name=models.CharField(max_length=100)

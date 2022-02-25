@@ -5,11 +5,16 @@ from django.db.models import Sum
 # Create your views here.
 def artshome(request):
     return render(request, 'arts.html')
+
 def artsdetails(request):
-    return render(request, 'artsdetails.html')
+    details=ArtsEvent.objects.all()
+    schedule=ArtsEventDetail.objects.all().order_by('event_dateTime')
+    return render(request, 'artsdetails.html',{'details':details,'schedule':schedule})
+
 def artsgallery(request):
     photos=ArtsGallery.objects.all()
     return render(request, 'arts_gallery.html',{'ph':photos})
+
 def arts_score(request):
     dim=ArtsParticipant.objects.filter(participant_house_id=1).aggregate(Sum('participant_score'))
     dim=dim['participant_score__sum']
@@ -21,6 +26,7 @@ def arts_score(request):
     sap=sap['participant_score__sum']
     rank=ArtsParticipant.objects.all().order_by('-participant_score')
     return render(request, 'arts_score.html',{'dim':dim,'rub':rub,'eme':eme,'sap':sap,'rank':rank})
+
 def arts_register(request):
     form=ArtsRegForm(request.POST)
     if request.method=='POST':
