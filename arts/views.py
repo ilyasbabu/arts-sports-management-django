@@ -25,7 +25,8 @@ def arts_score(request):
     dim=ArtsParticipant.objects.filter(participant_house_id=4).aggregate(Sum('participant_score'))
     dim=dim['participant_score__sum']
     rank=ArtsParticipant.objects.all().order_by('-participant_score')
-    return render(request, 'arts_score.html',{'dim':dim,'rub':rub,'eme':eme,'sap':sap,'rank':rank})
+    event=ArtsEventDetail.objects.all().order_by('rank1')
+    return render(request, 'arts_score.html',{'dim':dim,'rub':rub,'eme':eme,'sap':sap,'rank':rank,'event':event})
 
 def arts_register(request):
     form=ArtsRegForm(request.POST)

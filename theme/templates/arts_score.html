@@ -2,85 +2,116 @@
 {% load static %}
 
 {% block content %}
-    <!-- preloader -->
-    <div class="loader">
-        <img src="{% static 'media/loading.gif' %}" alt="">
-    </div>
-    <main class="min-h-screen bg-slate-50">
-        <script src="{% static 'js/script.js' %}"></script>
-        <div class="p-12">
-            <h1 class="mb-8 text-4xl font-semibold text-slate-700">
-                Arts scoreboard
+<!-- preloader -->
+<div class="loader">
+    <img src="{% static 'media/loading.gif' %}" alt="">
+</div>
+<main class="min-h-screen bg-slate-50">
+    <script src="{% static 'js/script.js' %}"></script>
+    <div class="p-12">
+        <h1 class="mb-8 text-4xl font-semibold text-slate-700">
+            Arts scoreboard
+        </h1>
+
+        <div class="container mb-14">
+            <h1 class="mb-8 text-2xl font-semibold underline">
+                Housewise results
+            </h1>
+            <table class="text-left md:w-1/2 w-full border-2 bg-white shadow-lg">
+                <thead class="bg-gray-800 flex text-white w-full">
+                    <tr class="flex w-full mb-4 ">
+                        <th class="p-4 w-1/4 text-xl">House</th>
+                        <th class="p-4  w-1/4 mx-auto text-xl">Points</th>
+                    </tr>
+                </thead>
+                <!-- Remove the nasty inline CSS fixed height on production and replace it with a CSS class — this is just for demonstration purposes! -->
+                <tbody class="bg-grey-light flex flex-col items-center justify-between border-2 w-full"
+                    style="height: 50vh;">
+                    <tr class="flex w-full mb-4">
+                        <td class="p-4 w-1/4 font-semibold">Diamond</td>
+                        <td class="p-4 w-1/4 mx-auto">{{dim}}</td>
+                    </tr>
+                    <tr class="flex w-full mb-4">
+                        <td class="p-4 w-1/4 font-semibold">Ruby</td>
+                        <td class="p-4 w-1/4 mx-auto">{{rub}}</td>
+                    </tr>
+                    <tr class="flex w-full mb-4">
+                        <td class="p-4 w-1/4 font-semibold">Emerald</td>
+                        <td class="p-4 w-1/4 mx-auto">{{eme}}</td>
+                    </tr>
+                    <tr class="flex w-full mb-4">
+                        <td class="p-4 w-1/4 font-semibold">Sapphire</td>
+                        <td class="p-4 w-1/4 mx-auto">{{sap}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="container">
+            <h1 class="mb-8 text-2xl font-semibold underline">
+                Individual results
             </h1>
 
-            <div class="container mb-14">
-                <h1 class="mb-8 text-2xl font-semibold underline">
-                    Housewise results
-                </h1>
-                <table class="text-left md:w-1/2 w-full border-2 bg-white shadow-lg">
-                    <thead class="bg-gray-800 flex text-white w-full">
-                        <tr class="flex w-full mb-4 ">
-                            <th class="p-4 w-1/4 text-xl">House</th>
-                            <th class="p-4  w-1/4 mx-auto text-xl">Points</th>
-                        </tr>
-                    </thead>
-                    <!-- Remove the nasty inline CSS fixed height on production and replace it with a CSS class — this is just for demonstration purposes! -->
-                    <tbody class="bg-grey-light flex flex-col items-center justify-between border-2 w-full"
-                        style="height: 50vh;">
-                        <tr class="flex w-full mb-4">
-                            <td class="p-4 w-1/4 font-semibold">Diamond</td>
-                            <td class="p-4 w-1/4 mx-auto">{{dim}}</td>
-                        </tr>
-                        <tr class="flex w-full mb-4">
-                            <td class="p-4 w-1/4 font-semibold">Ruby</td>
-                            <td class="p-4 w-1/4 mx-auto">{{rub}}</td>
-                        </tr>
-                        <tr class="flex w-full mb-4">
-                            <td class="p-4 w-1/4 font-semibold">Emerald</td>
-                            <td class="p-4 w-1/4 mx-auto">{{eme}}</td>
-                        </tr>
-                        <tr class="flex w-full mb-4">
-                            <td class="p-4 w-1/4 font-semibold">Sapphire</td>
-                            <td class="p-4 w-1/4 mx-auto">{{sap}}</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
+            <table class="text-left w-full border-2 bg-white shadow-lg">
+                <thead class="bg-gray-800 flex text-white w-full">
+                    <tr class="flex w-full mb-4">
+                        <th class="p-4 w-1/4">Rank</th>
+                        <th class="p-4 w-1/4">Student</th>
+                        <th class="p-4 w-1/4">House</th>
+                        <th class="p-4 w-1/4">Points</th>
+                    </tr>
+                </thead>
+                <!-- Remove the nasty inline CSS fixed height on production and replace it with a CSS class — this is just for demonstration purposes! -->
+                <tbody class="bg-grey-light flex flex-col items-center justify-between overflow-y-scroll w-full"
+                    style="height: 50vh;">
+                    {% if rank %}
+                    {% for i in rank %}
+                    <tr class="flex w-full mb-4">
+                        <td class="p-4 w-1/4">{{forloop.counter}}</td>
+                        <td class="p-4 w-1/4 font-semibold">{{i.participant_name}}</td>
+                        <td class="p-4 w-1/4">{{i.participant_house}}</td>
+                        <td class="p-4 w-1/4">{{i.participant_score}}</td>
+                    </tr>
+                    {% endfor %}
+                    {% else %}
+                    <tr class="flex w-full mb-4">
+                        <td class="p-4 w-1/4 font-semibold text-xl">Results coming soon!</td>
+                        {% endif %}
 
-            <div class="container">
-                <h1 class="mb-8 text-2xl font-semibold underline">
-                    Individual results
-                </h1>
-
-                <table class="text-left w-full border-2 bg-white shadow-lg">
-                    <thead class="bg-gray-800 flex text-white w-full">
-                        <tr class="flex w-full mb-4">
-                            <th class="p-4 w-1/4">Rank</th>
-                            <th class="p-4 w-1/4">Student</th>
-                            <th class="p-4 w-1/4">House</th>
-                            <th class="p-4 w-1/4">Points</th>
-                        </tr>
-                    </thead>
-                    <!-- Remove the nasty inline CSS fixed height on production and replace it with a CSS class — this is just for demonstration purposes! -->
-                    <tbody class="bg-grey-light flex flex-col items-center justify-between overflow-y-scroll w-full"
-                        style="height: 50vh;">
-                        {% if rank %}
-                        {% for i in rank %}
-                        <tr class="flex w-full mb-4">
-                            <td class="p-4 w-1/4">{{forloop.counter}}</td>
-                            <td class="p-4 w-1/4 font-semibold">{{i.participant_name}}</td>
-                            <td class="p-4 w-1/4">{{i.participant_house}}</td>
-                            <td class="p-4 w-1/4">{{i.participant_score}}</td>
-                        </tr>
-                        {% endfor %}
-                        {% else %}
-                        <tr class="flex w-full mb-4">
-                            <td class="p-4 w-1/4 font-semibold text-xl">Results coming soon!</td>
-                            {% endif %}
-                        
-                    </tbody>
-                </table>
-            </div>
+                </tbody>
+            </table>
         </div>
-    </main>
+        <div class="container">
+            <h1 class="mb-8 text-2xl font-semibold underline">
+                Event results
+            </h1>
+            <table class="text-left w-full border-2 bg-white shadow-lg">
+                <thead class="bg-gray-800 flex text-white w-full">
+                    <tr class="flex w-full mb-4">
+                        <th class="p-4 w-1/4">Event</th>
+                        <th class="p-4 w-1/4">First</th>
+                        <th class="p-4 w-1/4">Second</th>
+                        <th class="p-4 w-1/4">Third</th>
+                    </tr>
+                </thead>
+                <tbody class="bg-grey-light flex flex-col items-center justify-between overflow-y-scroll w-full"
+                    style="height: 50vh;">
+                    {% if event %}
+                    {% for i in event %}
+                    <tr class="flex w-full mb-4">
+                        <td class="p-4 w-1/4 font-semibold">{{i.event_name}}</td>
+                        <td class="p-4 w-1/4">{{i.rank1}}</td>
+                        <td class="p-4 w-1/4">{{i.rank2}}</td>
+                        <td class="p-4 w-1/4">{{i.rank3}}</td>
+                    </tr>
+                    {% endfor %}
+                    {% else %}
+                    <tr class="flex w-full mb-4">
+                        <td class="p-4 w-1/4 font-semibold text-xl">Results coming soon!</td>
+                        {% endif %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</main>
 {% endblock %}

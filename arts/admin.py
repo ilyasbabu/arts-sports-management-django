@@ -5,7 +5,8 @@ from .models import *
 admin.site.register(ArtsHouse)
 admin.site.register(ArtsEvent)
 class Details(admin.ModelAdmin):
-    list_display = ['event_name','event_dateTime']
+    list_display = ['event_name','event_dateTime','rank1','rank2','rank3']
+    list_editable=['event_dateTime','rank1','rank2','rank3']
 admin.site.register(ArtsEventDetail,Details)
 class Participant(admin.ModelAdmin):
     list_display=['__str__','participant_house','participant_score','participant_event_1','participant_event_2','participant_event_3']

@@ -11,10 +11,6 @@ class SportsEvent(models.Model):
     def __str__(self):
         return self.event_name
 
-class SportsEventDetail(models.Model):
-    event_name=models.ForeignKey(SportsEvent,on_delete=models.CASCADE)
-    event_dateTime=models.DateTimeField()
-    #event_time=models.CharField(max_length=10)
 
 class SportsParticipant(models.Model):
     participant_name=models.CharField(max_length=100)
@@ -36,3 +32,12 @@ class SportsGallery(models.Model):
     image_file=models.ImageField(upload_to='images/')
     def __str__(self):
         return self.image_name
+
+class SportsEventDetail(models.Model):
+    event_name=models.ForeignKey(SportsEvent,on_delete=models.CASCADE)
+    event_dateTime=models.DateTimeField()
+    rank1=models.ForeignKey(SportsParticipant,on_delete=models.CASCADE,null=True,blank=True,related_name='rank1')
+    rank2=models.ForeignKey(SportsParticipant,on_delete=models.CASCADE,null=True,blank=True,related_name='rank2')
+    rank3=models.ForeignKey(SportsParticipant,on_delete=models.CASCADE,null=True,blank=True,related_name='rank3')
+    def __str__(self):
+        return self.event_name.event_name
