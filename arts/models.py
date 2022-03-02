@@ -21,7 +21,7 @@ class ArtsEventDetail(models.Model):
 class ArtsParticipant(models.Model):
     participant_name=models.CharField(max_length=100)
     participant_email=models.EmailField()
-    participant_mobile=models.IntegerField()
+    participant_mobile=models.CharField(max_length=12)
     participant_department=models.CharField(max_length=100)
     participant_year=models.CharField(max_length=15)
     participant_house=models.ForeignKey(ArtsHouse,on_delete=models.CASCADE)

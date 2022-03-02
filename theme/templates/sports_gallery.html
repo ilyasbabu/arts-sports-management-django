@@ -14,8 +14,8 @@
     <div class="flex flex-wrap -m-4">
         <!-- img component -->
         {% for i in ph %}
-        <div class="lg:w-1/4 md:w-1/3 w-full p-4">
-            <a href="#">
+        <div class="lg:w-1/4 md:w-1/3 w-full p-4" title="Click to view in full size">
+            <a href="" id="{{i.image_file.url}}" onclick="document.location=this.id;return false;" >
                 <div class="flex relative">
                     <img alt="SportsPhotos" class="absolute inset-0 w-full h-full object-cover object-center"
                         src="{{i.image_file.url}}">

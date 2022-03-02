@@ -2,8 +2,8 @@
 {% load static %}
 {% block content %}
 <style>
-    .hei{
-        min-height: 83vh ;
+    .hei {
+        min-height: 83vh;
     }
 </style>
 <main class="hei bg-slate-100">
@@ -65,7 +65,7 @@
                 </div>
                 <div class="w-full h-full overflow-auto shadow bg-white" id="journal-scroll">
                     <table class="w-full">
-                        <tbody class="">
+                        <tbody class="">{% if schedule %}
                             {% for i in schedule %}
                             <tr
                                 class="relative transform scale-100 text-xs py-1 border-b-2 border-blue-100 cursor-default">
@@ -74,10 +74,17 @@
                                     <div class="text-lg">{{i.event_dateTime|time}}</div>
                                 </td>
                                 <td class="px-2 py-2 whitespace-no-wrap">
-                                    <div class="leading-5 text-gray-500 font-medium text-lg">{{i.event_name}}</div>
+                                    <div class="leading-5 text-gray-500 font-medium text-xl">{{i.event_name}}</div>
                                 </td>
                             </tr>
                             {% endfor %}
+                            {% else %}
+                            <tr>
+                                <td class="p-4 text-xl">
+                                    No events scheduled
+                                </td>
+                            </tr>
+                            {% endif %}
                         </tbody>
                     </table>
                 </div>
