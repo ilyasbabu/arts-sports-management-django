@@ -1,1 +1,1 @@
-web: gunicorn qbankproject.wsgi --log-file -
+web: gunicorn artsport_project.wsgi --log-file -
