@@ -44,3 +44,6 @@ def arts_register(request):
         participant.save()
         return redirect('/')
     return render(request, 'arts_register.html',{'form':form})
+
+def error_404(request, exception):
+    return render(request, '404.html')

@@ -20,6 +20,7 @@ from django.urls import path,include
 from mainapp import views as mainapp_views
 from arts import views as artsviews
 from sports import views as sportsviews
+from django.conf.urls import handler404
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -38,3 +39,5 @@ urlpatterns = [
 ]
 
 urlpatterns += static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)
+
+handler404 = 'arts.views.error_404'

@@ -1,0 +1,24 @@
+{% extends "admin/base.html" %}
+
+{% load static %}
+
+{% block title %}{{ title }} | {{ site_title|default:_('Django site admin') }}{% endblock %}
+
+{% block branding %}
+<h1 id="site-name">
+    {{block.super}}
+    <a href="{% url 'admin:index' %}">
+        Arts & Sports Management Admin
+    </a>
+</h1>
+{% endblock %}
+{% block welcome-msg %} 
+{{block.super}}
+<a href="https://e-certificate-generator-django.herokuapp.com"> generate e-certificate </a> /
+{% endblock %}
+{% block nav-global %} {{block.super}} {% endblock %}
+
+
+
+
+
