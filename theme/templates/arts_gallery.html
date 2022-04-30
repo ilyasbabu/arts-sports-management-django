@@ -1,43 +1,58 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block title %}
-Arts Gallery | Arts & Sports Management
+Arts Gallery | artspo
 {% endblock %}
 {% block content %}
-    <!-- preloader --> 
-    <div class="loader">
-        <img src="{% static 'media/loading.gif' %}" alt="">
-    </div>
-    <main class="min-h-screen">
-        <script src="{% static 'js/script.js' %}"></script>
-<div class="container px-5 py-20 mx-auto">
-    <div class="flex flex-col text-center w-full mb-20">
-        <h1 class="sm:text-3xl text-2xl font-medium title-font mb-4 text-gray-900">Arts Gallery</h1>
-    </div>
-    <div class="flex flex-wrap -m-4">
-        <!-- img component -->
-        {% for i in ph %}
-        <div class="lg:w-1/4 md:w-1/3 w-full p-4" title="Click to view in full size">
-            <a href="#" id="{{i.image_file.url}}" onclick="document.location=this.id;return false;" >
-                <div class="flex relative">
-                    <img alt="SportsPhotos" class="absolute inset-0 w-full h-full object-cover object-center"
-                        src="{{i.image_file.url}}">
-                    <div
-                        class="px-8 py-10 relative z-10 w-full h-1/2 border-4 border-gray-200 bg-gray-600 opacity-0 hover:opacity-90">
-
-                        <h1 class="title-font text-lg font-bold text-white hover:text-indigo-100 mb-3">{{i.image_name}}</h1>
-                        <p class="leading-relaxed text-white">{{i.image_desc}} <br><br><br><br>
-                        </p>
-                    </div>
-                </div>
-            </a>
-        </div>
-        {% endfor %}
-        <!-- img component end -->
-
-
-    </div>
+<!-- preloader -->
+<div class="loader">
+    <img src="{% static 'media/loading.gif' %}" alt="">
 </div>
-
+<main class="min-h-screen" >
+    <div class="w-full min-h-screen bgimg">
+        <style>
+            .bgimg {
+                background-image: url("{% static 'media/gallbg.jpg' %}");
+                background-repeat: repeat-x;
+            }
+        </style>
+        <script src="{% static 'js/script.js' %}"></script>
+        <div class="container px-5 py-20 mx-auto">
+            <div class="flex justify-between w-full mb-20">
+                <h1 class="sm:text-3xl text-2xl font-medium title-font mb-4 text-gray-900 hover:font-bold "><a href="/arts/gallery/"> Arts Gallery</a></h1>
+                <div>
+                    <form action="/arts/gallery/search/" class="flex" method="get">
+                        <input class="shadow-md rounded-sm sm:w-64 w-40" placeholder="Search for image by year/event" type="text"
+                            name="q" id="q">
+                        <button class="bg-slate-800 text-white rounded-sm px-3 py-2" type="submit">Search</button>
+                    </form>
+                </div>
+            </div>
+            <div class="flex flex-wrap -m-4">
+                <!-- img component -->
+                {% if ph %}
+                {% for i in ph %}
+                <div class="lg:w-1/4 md:w-1/3 w-full p-4 hover:shadow-md shadow-white" title="Click to view in full size">
+                    <a href="" id="{{i.image_file.url}}" onclick="document.location=this.id;return false;">
+                        <div class="flex relative">
+                            <img alt="ArtsPhotos" class="absolute inset-0 w-full h-full object-cover object-center"
+                                src="{{i.image_file.url}}">
+                            <div
+                                class="px-8 py-10 relative z-10 w-full h-1/2 border-4 border-gray-200 bg-gray-400 opacity-0 hover:opacity-50">
+                                <h1 class="title-font text-xl font-bold text-black mb-3">{{i.event_name}}({{i.year}})
+                                </h1>
+                                <p class="leading-relaxed text-black"><br><br><br><br>
+                                </p>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                {% endfor %}
+                {% else %}
+                <p class="text-lg px-5">No results found</p>
+                {% endif %}
+            </div>
+        </div>
+    </div>
 </main>
 {% endblock %}

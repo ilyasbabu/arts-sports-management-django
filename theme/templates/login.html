@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<main class="min-h-screen amal-bg">
+    <style>
+        .amal-bg {
+            background-image: url("{% static 'media/amalbg.jpg' %}");
+            
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-size: cover;
+        }
+    </style>
+    <div class="bg-white sticky shadow-2xl flex justify-between">
+        <div>
+            <h1 class="sm:text-5xl sm:mt-0 mt-1 text-gray-700 p-4 text-4xl sm:ml-32 font-bold font-sans">ARTSPO</h1>
+        </div>
+        <div class="p-3 mr-4 sm:mr-32 ">
+            <img src="{% static 'media/amal.png' %}" style="height: 60px;" alt="">
+        </div>
+    </div>
+    <div class="flex relative justify-center items-center" style="min-height: 85vh;">
+        <div class="sm:w-1/2 w-11/12 shadow-2xl bg-white bg-opacity-75   p-5 rounded-md ">
+            <div>
+                <h1 class="text-2xl font-semibold sm:ml-9 mt-5">Login</h1>
+            </div>
+            <div class="py-5 w-full">
+                <form action="" method="post" class="flex justify-center w-full">
+                    {% csrf_token %}
+                    <div class="mb-6">
+                        <label for="admission number" class="font-semibold mb-4">Admission Number:</label>
+                        <input type="number" name="admission" id="admission" class="w-10/12 mt-2 opacity-90">
+                        <input type="submit" value="Login"
+                            class="bg-green-600 border-2 sm:mt-0 mt-4 text-white p-2 rounded hover:bg-green-800 hover:shadow-yellow-400 hover:shadow">
+                    </div>
+                </form>
+                {% if messages %}
+                <div class="flex justify-center mb-3 text-red-700  font-semibold">
+                    <ul class="messages">
+                        {% for message in messages %}
+                        <li {% if message.tags %} class="{{ message.tags }}" {% endif %}>{{ message }}</li>
+                        {% endfor %}
+                    </ul>
+                    {% endif %}
+                </div>
+                <div class="flex justify-center mb-2  font-semibold">
+                    If Admin? <a href="/admin" class="underline text-blue-700"> click here!</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+{% endblock %}

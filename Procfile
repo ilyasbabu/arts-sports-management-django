@@ -1,1 +1,0 @@
-web: gunicorn artsport_project.wsgi --log-file -

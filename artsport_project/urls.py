@@ -24,19 +24,22 @@ from django.conf.urls import handler404
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path("__reload__/", include("django_browser_reload.urls")),
-    path('', mainapp_views.home, name='home'),
+    # path("__reload__/", include("django_browser_reload.urls")),
+    path('',mainapp_views.v_login,name='v_login'),
+    # path('home/', mainapp_views.home, name='home'),
     path('arts/',artsviews.artshome,name='artshome'),
     path('sports/',sportsviews.sportshome,name='sportshome'),
     path('arts/details/',artsviews.artsdetails,name='artsdetails'),
     path('sports/details/',sportsviews.sportsdetails,name='sportsdetails'),
     path('arts/gallery/',artsviews.artsgallery,name='artsgallery'),
     path('sports/gallery/',sportsviews.sportsgallery,name='sportsgallery'),
+    path('sports/gallery/search/',sportsviews.spogallerysearch,name='spogallerysearch'),
+    path('arts/gallery/search/',artsviews.artgallerysearch,name='artgallerysearch'),
     path('arts/score/',artsviews.arts_score,name='arts_score'),
     path('sports/score/',sportsviews.sports_score,name='sports_score'),
     path('arts/register',artsviews.arts_register,name='arts_register'),
     path('sports/register',sportsviews.sports_register,name='sports_register'),
-]
+]+ static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 
 urlpatterns += static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)
 

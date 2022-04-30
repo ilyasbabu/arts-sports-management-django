@@ -30,11 +30,10 @@ class ArtsParticipant(models.Model):
         return self.participant_name
 
 class ArtsGallery(models.Model):
-    image_name=models.CharField(max_length=100)
-    image_desc=models.TextField()
+    event_name=models.ForeignKey(ArtsEvent,on_delete=models.CASCADE)
+    year=models.IntegerField()
     image_file=models.ImageField(upload_to='images/')
-    def __str__(self):
-        return self.image_name
+    
 
 class ArtsEventDetail(models.Model):
     event_name=models.ForeignKey(ArtsEvent,on_delete=models.CASCADE)
